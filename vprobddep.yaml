@@ -16,7 +16,7 @@ spec:
     spec:
     containers:
       - name: vprodb
-        image: gilford88/vprodb
+        image: gilford88/vprodb:V1
         volumeMounts:
           - mountPath: /var/lib.mysql
             name: vpro-db-data
@@ -42,8 +42,9 @@ spec:
         image: busybox:latest
         args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
         volumeMounts:
-          - mountPath: /var/lib.mysql
-            name: vpro-db-data
+          - name: vpro-db-data
+            mountPath: /var/lib.mysql
+            
 
 
               
