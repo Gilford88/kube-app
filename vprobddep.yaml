@@ -15,20 +15,20 @@ spec:
         app: vprodb
     spec:
     containers:
-    - name: vprodb
-      image: gilford88/vprodb:V1
-      volumeMounts:
-        - mountPath: /var/lib.mysql
-          name: vpro-db-data
-      ports:
+      - name: vprodb
+        image: gilford88/vprodb
+        volumeMounts:
+          - mountPath: /var/lib.mysql
+            name: vpro-db-data
+        ports:
         -name: vprodb-port
         containerPort: 3306
-      env:
-        - name: MYSL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: app-secret
-              key: db-pass
+        env:
+          - name: MYSL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: db-pass
     nodeSelector:
       zone: us-east-1a
     volumes:
